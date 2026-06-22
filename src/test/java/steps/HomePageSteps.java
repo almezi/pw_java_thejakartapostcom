@@ -4,6 +4,7 @@ import com.microsoft.playwright.Page;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.HomePageLocators;
 import support.PlaywrightFactory;
 
@@ -17,11 +18,14 @@ public class HomePageSteps {
         page.navigate("https://thejakartapost.com/");
     }
 
-    @Then("the page title should contain {string}")
+    @When("the page title should contain {string}")
     public void thePageTitleShouldContain(String expectedText) {
-        String actualText = homePageLocators.getJakartaPostLogo();
-
         assertThat(page.locator(homePageLocators.getJakartaPostLogo()).first())
                 .containsText(expectedText);
+    }
+
+    @When("click login button in header of website")
+    public void clickLoginButtonInHeaderOfWebsite() {
+        homePageLocators.clickLoginButton();
     }
 }
