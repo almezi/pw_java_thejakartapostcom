@@ -32,6 +32,16 @@ public class LoginPageSteps {
 
     @Then("I should see the password error message {string}")
     public void userGetErrorBellowPasswordFieldWith(String errorMessage) {
-        assertThat(page.locator(LoginPageLocators.ERROR_MESSAGE)).containsText(errorMessage);
+        assertThat(page.locator(LoginPageLocators.ERROR_MESSAGE_PASSWORD)).containsText(errorMessage);
+    }
+
+    @When("I fill the login password field with {string}")
+    public void iFillTheLoginPasswordFieldWith(String inputPassword) {
+        loginPageLocators.inputPassword(inputPassword);
+    }
+
+    @Then("I should see the email error message {string}")
+    public void iShouldSeeTheEmailErrorMessage(String errorMessage) {
+        assertThat(page.locator(LoginPageLocators.ERROR_MESSAGE_EMAIL)).containsText(errorMessage);
     }
 }

@@ -13,7 +13,8 @@ public class LoginPageLocators {
     public static final String INPUT_EMAIL = "//input[@id='email']";
     public static final String INPUT_PASSWORD = "//input[@id='password']";
     public static final String LOGIN_BUTTON = "//div[@class='form__action']//button";
-    public static final String ERROR_MESSAGE = "//span[contains(@class,'jp-msg-password')]";
+    public static final String ERROR_MESSAGE_PASSWORD = "//span[contains(@class,'jp-msg-password')]";
+    public static final String ERROR_MESSAGE_EMAIL = "//span[contains(@class,'jp-msg-email')]";
     public Locator loginPageTitle() {
         return page.locator(LOGIN_PAGE_TITLE);
     }
@@ -33,5 +34,9 @@ public class LoginPageLocators {
 
     public void clickLoginButton(){
         page.locator(LOGIN_BUTTON).first().click();
+    }
+
+    public void inputPassword(String password){
+        page.locator(INPUT_PASSWORD).first().fill(password);
     }
 }
