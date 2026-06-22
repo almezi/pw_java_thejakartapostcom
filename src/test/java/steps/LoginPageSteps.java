@@ -13,24 +13,24 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class LoginPageSteps {
     private final Page page = PlaywrightFactory.getPage();
     private final LoginPageLocators loginPageLocators = new LoginPageLocators();
-    @Then("user should see login page")
+    @Then("I should see login page")
     public void userShouldSeeLoginPage() {
         if (!loginPageLocators.isLoginPageDisplayed()) {
             throw new AssertionError("Login page is not displayed");
         }
     }
 
-    @When("user fill email field in login page with {string}")
+    @When("I fill the login email field with {string}")
     public void userFillEmailFieldInLoginPageWith(String inputEmail) {
         loginPageLocators.inputEmail(inputEmail);
     }
 
-    @And("click login button in login page")
+    @And("I click the login button on the login page")
     public void clickLoginButtonInLoginPage() {
         loginPageLocators.clickLoginButton();
     }
 
-    @Then("user get error bellow password field with {string}")
+    @Then("I should see the password error message {string}")
     public void userGetErrorBellowPasswordFieldWith(String errorMessage) {
         assertThat(page.locator(LoginPageLocators.ERROR_MESSAGE)).containsText(errorMessage);
     }

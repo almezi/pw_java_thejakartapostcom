@@ -24,7 +24,7 @@ public class HomePageSteps {
                 .containsText(expectedText);
     }
 
-    @When("click login button in header of website")
+    @When("I click login button in header of website")
     public void clickLoginButtonInHeaderOfWebsite() {
         homePageLocators.clickLoginButton();
     }

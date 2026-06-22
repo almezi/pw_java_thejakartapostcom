@@ -1,12 +1,13 @@
 Feature: Login page
 
-  Scenario: User enter email field but not input the password than click submit
+  Background:
     Given I open The Jakarta Post website
     When the page title should contain "The Jakarta Post"
 
-    When click login button in header of website
-    Then user should see login page
+    When I click login button in header of website
+    Then I should see login page
 
-    When user fill email field in login page with "random@email.com"
-    And click login button in login page
-    Then user get error bellow password field with "Please enter a password."
+  Scenario: Show password required error when user submits login form without password
+    When I fill the login email field with "random@email.com"
+    And I click the login button on the login page
+    Then I should see the password error message "Please enter a password."
