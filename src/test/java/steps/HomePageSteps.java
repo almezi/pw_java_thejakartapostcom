@@ -9,9 +9,6 @@ import support.PlaywrightFactory;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-//import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class HomePageSteps {
     private final Page page = PlaywrightFactory.getPage();
     private final HomePageLocators homePageLocators = new HomePageLocators();
