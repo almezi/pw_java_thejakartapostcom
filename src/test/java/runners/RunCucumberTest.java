@@ -15,8 +15,8 @@ import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_N
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "steps,support")
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
-        value = "pretty, html:target/cucumber-report.html, json:target/cucumber-report.json"
+        value = "pretty, html:target/cucumber-reports/cucumber.html, json:target/cucumber-reports/cucumber.json"
 )
-@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@test")
+@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@Regression")
 public class RunCucumberTest {
 }
