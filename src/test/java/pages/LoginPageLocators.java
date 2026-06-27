@@ -1,0 +1,59 @@
+package pages;
+
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitForSelectorState;
+import support.PlaywrightFactory;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+public class LoginPageLocators {
+    private final Page page = PlaywrightFactory.getPage();
+    public static final String LOGIN_PAGE_TITLE = "//h1[normalize-space()='WELCOME BACK']";
+    public static final String INPUT_EMAIL = "//input[@id='email']";
+    public static final String INPUT_PASSWORD = "//input[@id='password']";
+    public static final String LOGIN_BUTTON = "//div[@class='form__action']//button";
+    public static final String REGISTER_AS_ORGANIZATION_BUTTON = "//div[@class='company']//a";
+    public static final String REGISTER_AS_PERSONAL_BUTTON = "//div[@class='personal']//a";
+    public static final String ERROR_MESSAGE_PASSWORD = "//span[contains(@class,'jp-msg-password')]";
+    public static final String ERROR_MESSAGE_EMAIL = "//span[contains(@class,'jp-msg-email')]";
+    public static final String ERROR_MESSAGE_HEADER = "//div[contains(@class,'form__header-msg--error')]//label";
+    public static final String TOGGLE_PASSWORD = "//span[contains(@class,'toggle-password')]";
+    public static final String PASSWORD_FIELD = "//input[@id='password']";
+    public Locator loginPageTitle() {
+        return page.locator(LOGIN_PAGE_TITLE);
+    }
+
+    public boolean isLoginPageDisplayed() {
+        try {
+            loginPageTitle().waitFor(new Locator.WaitForOptions()
+                    .setState(WaitForSelectorState.VISIBLE)
+                    .setTimeout(10000));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void inputEmail(String email) {
+        page.locator(INPUT_EMAIL).first().fill(email);
+    }
+
+    public void clickLoginButton() {
+        page.locator(LOGIN_BUTTON).first().click();
+    }
+
+    public void inputPassword(String password) {
+        page.locator(INPUT_PASSWORD).first().fill(password);
+    }
+
+    public void clickRegisterAsAnOrganization() {
+        page.locator(REGISTER_AS_ORGANIZATION_BUTTON).first().click();
+    }
+    public void clickRegisterAsAnPersonal() {
+        page.locator(REGISTER_AS_PERSONAL_BUTTON).first().click();
+    }
+    public void clickTogglePassword() {
+        page.locator(TOGGLE_PASSWORD).click();
+    }
+}
