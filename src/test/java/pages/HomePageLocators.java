@@ -9,10 +9,14 @@ public class HomePageLocators {
 
     public static final String JAKARTA_POST_LOGO = "//h1[@class='thejakartapost']";
     public static final String LOGIN_BUTTON = "//a[contains(@class,'login btn-login-new')]";
+    public static final String LATEST_NEWS_VIEWMORE_BUTTON = "//a[contains(@class,'viewmore')]";
     public String getJakartaPostLogo() {
         return JAKARTA_POST_LOGO;
     }
     public void clickLoginButton() {
         page.locator(LOGIN_BUTTON).first().click();
+    }
+    public void clickViewMoreInTheLatestNews() {
+        page.locator(LATEST_NEWS_VIEWMORE_BUTTON).first().click();
     }
 }

@@ -28,4 +28,9 @@ public class HomePageSteps {
     public void clickLoginButtonInHeaderOfWebsite() {
         homePageLocators.clickLoginButton();
     }
+
+    @When("I click view more in the latest news")
+    public void iClickViewMoreInTheLatestNews() {
+        homePageLocators.clickViewMoreInTheLatestNews();
+    }
 }

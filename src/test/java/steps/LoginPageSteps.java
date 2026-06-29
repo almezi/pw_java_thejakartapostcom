@@ -62,6 +62,8 @@ public class LoginPageSteps {
             url = "https://www.thejakartapost.com/contact-us";
         }else if (url.equals("subscribe")) {
             url = "https://www.thejakartapost.com/subscribe?layout=new";
+        }else if (url.equals("latest")) {
+            url = "https://www.thejakartapost.com/latest";
         }
         assertThat(page).hasURL(url);
     }
