@@ -33,7 +33,44 @@ An automated testing framework built with Java and Playwright, following the BDD
 └── target          # Test output, including logs and HTML reports
 ```
 
-### 5. Test Scope
+## 5. README Explanation
+
+### How to run locally
+1. Clone the repository.
+2. Open a terminal in the project root.
+3. Run the tests using Maven:
+   ```bash
+   mvn test
+   ```
+
+### How to run headless/headed
+By default, tests run in **headless** mode. To toggle this, use the `headless` system property:
+* **Headed mode**: `mvn test -Dheadless=false`
+* **Headless mode**: `mvn test -Dheadless=true`
+
+### How to run by Cucumber tag
+To run tests with a specific tag (e.g., `@Regression`, `@Negative`, `@Positive`):
+```bash
+mvn test -Dcucumber.filter.tags="@YourTag"
+```
+
+### CI/CD behavior
+This project uses **GitHub Actions** to run the automated test suite.
+* Tests are triggered automatically on:
+    * Pushes to the `main` and `develop` branches.
+    * Pull requests targeting the `main` branch.
+    * Scheduled weekday runs (cron).
+* The workflow installs Java 17, installs Playwright Chromium, runs the test suite, and uploads reports.
+
+### Report location
+After execution, Cucumber reports are generated at:
+* **Local**: `target/cucumber-reports/cucumber.html`
+* **CI/CD**: Reports are available as GitHub Action artifacts and published to GitHub Pages.
+
+### Known limitation for third-party protected websites
+Some tests target a public third-party website. These tests may be blocked in cloud CI environments because many production websites use CDN/WAF protection such as CloudFront or Cloudflare. For ethical and reliable automation, those scenarios are intended for local/manual execution only and are excluded from CI.
+
+## 6. Test Scope
 
 #### What's Covered:
 
@@ -55,54 +92,6 @@ The decision to exclude full authentication and OTP handling is strategic:
 2. **Environment Control**: The authentication and subscription systems are external and not under the direct control of this test suite. Testing these would lead to high maintenance and potential flakiness.
 3. **Security Best Practices**: Avoiding the use of real user data and bypassing security measures like OTP ensures the test suite remains safe and doesn't interfere with real security protocols.
 
-### 6. How to Run Locally
+## Note about third-party website testing
 
-#### Prerequisites
-
-- **Java JDK 17**
-- **Apache Maven**
-
-#### Execution Steps
-
-1. Clone the repository.
-2. Open a terminal in the project root.
-3. Run the tests using Maven:
-   ```bash
-   mvn test
-   ```
-4. To run specific tags (if configured):
-   ```bash
-   mvn test -Dcucumber.filter.tags="@Regression"
-   ```
-
-### Viewing Reports Locally
-
-After the tests complete, Cucumber reports are generated at:
-target/cucumber-reports/cucumber.html and target/cucumber-reports/cucumber.json
-
-### 7. CI/CD
-Note: Cannot run in github actions due to limitation on cloudflare checking on the websitte
-This project uses **GitHub Actions** to run the automated test suite.
-
-Tests are triggered automatically on:
-
-- Pushes to the `main` branch
-- Pushes to the `develop` branch
-- Pull requests targeting the `main` branch
-- Scheduled weekday runs using cron
-
-The CI workflow installs Java 17, installs Playwright Chromium browser dependencies, runs the Cucumber test suite with Maven, uploads the Cucumber report as an artifact, and publishes the report to GitHub Pages.
-
-GitHub Actions workflow file(deprecated):
-
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml)
-
-### 8. Test Reports(Deprecated)
-
-Cucumber reports are generated after each test run in the following directory:
-📊 [Latest Test Report](https://almezi.github.io/pw_java_thejakartapostcom/reports/cucumber.html)
-
-### 9. Known Limitations
-
-- **External Dependencies**: The project does not have control over the target site's backend or live environment changes.
-- **Authentication Restrictions**: Due to security and TOS considerations, full authentication and subscription flows are not automated to avoid potential account blocking or TOS violations.
+* Some tests target a public third-party website. These tests may be blocked in cloud CI environments because many production websites use CDN/WAF protection such as CloudFront or Cloudflare. For ethical and reliable automation, those scenarios are intended for local/manual execution only and are excluded from CI.
