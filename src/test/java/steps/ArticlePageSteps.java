@@ -12,11 +12,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class ArticlePageSteps {
     private final Page page = PlaywrightFactory.getPage();
     private final ArticlePageLocators articlePageLocators = new ArticlePageLocators();
-    @Then("i should not see paywall active")
-    public void iShouldNotSeePaywallActive() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 
     @Then("I should see premium badge in the article")
     public void iShouldSeePremiumBadgeInTheArticle() {
@@ -31,7 +26,16 @@ public class ArticlePageSteps {
 
     @Then("I should see paywall active")
     public void iShouldSeePaywallActive() {
+        assertThat(articlePageLocators.paywallActiveMessage()).isVisible();
+    }
 
+    @Then("i should not see paywall active")
+    public void iShouldNotSeePaywallActive() {
+        assertThat(articlePageLocators.paywallActiveMessage()).isHidden();
+    }
 
+    @Then("I should not see premium badge in the article")
+    public void iShouldNotSeePremiumBadgeInTheArticle() {
+        assertThat(articlePageLocators.premiumArticleBadge()).isHidden();
     }
 }

@@ -9,7 +9,7 @@ public class HomePageLocators {
 
     public static final String JAKARTA_POST_LOGO = "//h1[@class='thejakartapost']";
     public static final String LOGIN_BUTTON = "//a[contains(@class,'login btn-login-new')]";
-    public static final String LATEST_NEWS_VIEWMORE_BUTTON = "//a[contains(@class,'viewmore')]";
+    public static final String LATEST_NEWS_VIEWMORE_BUTTON = "//a[@class='tjp-head-section__action']";
     public String getJakartaPostLogo() {
         return JAKARTA_POST_LOGO;
     }

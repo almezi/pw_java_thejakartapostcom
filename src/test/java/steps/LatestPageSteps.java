@@ -15,7 +15,7 @@ public class LatestPageSteps {
     }
 
     @When("I click the first non premium article")
-    public void iClickTheFirstNonPremiumArticle() {
+    public void iClickTheFirstNonPremiumArticle(){
         latestPageLocators.clickNonPremiumArticleTitle();
     }
 

@@ -13,7 +13,7 @@ public class PlaywrightFactory {
     public static Page getPage() {
         if (page == null) {
             playwright = Playwright.create();
-            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
             browser = playwright.chromium().launch(
                     new BrowserType.LaunchOptions()
                             .setHeadless(headless)
