@@ -1,6 +1,6 @@
 # Playwright Java Automation - The Jakarta Post
 
-This project is an automated test suite designed for verifying the core functionalities of The Jakarta Post website. It utilizes modern automation tools to ensure reliability and consistency across critical user paths.
+This project is an automated test suite designed for verifying the core functionalities of The Jakarta Post website. It utilizes modern automation tools to ensure reliability and consistency across critical user paths. And only can run in the local mechine.
 
 ## 1. What the project is
 
@@ -81,7 +81,7 @@ After the tests complete, Cucumber reports are generated at:
 target/cucumber-reports/cucumber.html and target/cucumber-reports/cucumber.json
 
 ### 7. CI/CD
-
+Note: Cannot run in github actions due to limitation on cloudflare checking on the websitte
 This project uses **GitHub Actions** to run the automated test suite.
 
 Tests are triggered automatically on:
@@ -93,11 +93,11 @@ Tests are triggered automatically on:
 
 The CI workflow installs Java 17, installs Playwright Chromium browser dependencies, runs the Cucumber test suite with Maven, uploads the Cucumber report as an artifact, and publishes the report to GitHub Pages.
 
-GitHub Actions workflow file:
+GitHub Actions workflow file(deprecated):
 
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
-### 8. Test Reports
+### 8. Test Reports(Deprecated)
 
 Cucumber reports are generated after each test run in the following directory:
 📊 [Latest Test Report](https://almezi.github.io/pw_java_thejakartapostcom/reports/cucumber.html)
